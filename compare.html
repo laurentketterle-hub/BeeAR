@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BeeAR — Compare Mode</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: system-ui, sans-serif; background: #0a0a0a; color: #fff; min-height: 100vh; display: flex; flex-direction: column; }
+    header { padding: 16px 24px; background: #111; border-bottom: 1px solid #222; display: flex; justify-content: space-between; align-items: center; }
+    header h1 { font-size: 20px; color: #facc15; }
+    header a { color: #60a5fa; text-decoration: none; }
+    .container { flex: 1; display: flex; gap: 0; padding: 24px; }
+    .frame-panel { flex: 1; display: flex; flex-direction: column; align-items: center; border: 1px solid #222; border-radius: 12px; padding: 24px; background: #111; }
+    .frame-panel canvas { max-width: 100%; border-radius: 8px; background: #1a1a1a; }
+    .frame-panel h3 { margin: 16px 0 8px; color: #facc15; }
+    .frame-panel select { padding: 8px 12px; background: #222; color: #fff; border: 1px solid #333; border-radius: 6px; width: 200px; }
+    .divider { width: 2px; background: #222; margin: 0 8px; }
+    .actions { text-align: center; padding: 24px; }
+    .actions button { padding: 10px 24px; background: #facc15; color: #0a0a0a; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; margin: 0 8px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🐝 BeeAR — Compare Mode</h1>
+    <a href="index.html">← Back to Try-On</a>
+  </header>
+  <div class="container">
+    <div class="frame-panel" id="left-panel">
+      <canvas id="left-canvas" width="300" height="400"></canvas>
+      <h3>Frame A</h3>
+      <select id="left-select"><option>Select frame...</option></select>
+    </div>
+    <div class="divider"></div>
+    <div class="frame-panel" id="right-panel">
+      <canvas id="right-canvas" width="300" height="400"></canvas>
+      <h3>Frame B</h3>
+      <select id="right-select"><option>Select frame...</option></select>
+    </div>
+  </div>
+  <div class="actions">
+    <button onclick="window.location.href='index.html'">Try-On Mode</button>
+    <button onclick="alert('Compare mode — select two frames to compare side-by-side')">Help</button>
+  </div>
+  <script>
+    // Placeholder: draw frame previews when selected
+    const canvases = [document.getElementById('left-canvas'), document.getElementById('right-canvas')];
+    canvases.forEach(c => {
+      const ctx = c.getContext('2d');
+      ctx.fillStyle = '#222';
+      ctx.fillRect(0, 0, c.width, c.height);
+      ctx.fillStyle = '#444';
+      ctx.font = '14px system-ui';
+      ctx.textAlign = 'center';
+      ctx.fillText('Select a frame', c.width/2, c.height/2);
+    });
+    
+    ['left-select', 'right-select'].forEach((selId, idx) => {
+      document.getElementById(selId).addEventListener('change', (e) => {
+        const ctx = canvases[idx].getContext('2d');
+        ctx.fillStyle = '#1a1a1a';
+        ctx.fillRect(0, 0, canvases[idx].width, canvases[idx].height);
+        ctx.fillStyle = '#facc15';
+        ctx.font = '14px system-ui';
+        ctx.textAlign = 'center';
+        ctx.fillText(e.target.value, canvases[idx].width/2, canvases[idx].height/2);
+      });
+    });
+    
+    // Populate selectors from available SKUs
+    const dummyFrames = ['Aviator Classic', 'Wayfarer Pro', 'Round Vintage', 'Cat-Eye', 'Oversized Square', 'Browline', 'Geometric', 'Shield'];
+    ['left-select', 'right-select'].forEach(id => {
+      const sel = document.getElementById(id);
+      dummyFrames.forEach(f => {
+        const opt = document.createElement('option');
+        opt.value = f;
+        opt.textContent = f;
+        sel.appendChild(opt);
+      });
+    });
+  </script>
+</body>
+</html>
