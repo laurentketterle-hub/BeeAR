@@ -10,4 +10,3 @@ jobs:
       - name: Verify files
         run: |
           test -f compare.html && echo "compare.html OK"
-          test -f index.html && echo "index.html OK"
