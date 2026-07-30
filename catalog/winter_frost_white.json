@@ -1,0 +1,10 @@
+{
+  "sku": "winter_frost_white",
+  "name": "Winter Frost White",
+  "type": "frame",
+  "material": "acetate",
+  "color": "frost_white",
+  "shape": "cat_eye",
+  "model_path": "models/cateye.glb",
+  "texture_path": "textures/frost_white.png"
+}

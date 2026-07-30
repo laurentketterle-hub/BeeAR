@@ -1,5 +1,5 @@
 {
-  "version": 54,
+  "version": 55,
   "frames": [
     {
       "id": "meshy_ellipse_frames",
@@ -1810,6 +1810,86 @@
       },
       "render_mode": "glb3d",
       "description": "Rose gold round frames \u2014 catalog SKU cycle 16q"
+    },
+    {
+      "id": "spring_blossom_pink",
+      "name": "Spring Blossom Pink",
+      "brand": "BeeAR Seasonal",
+      "category": "glasses",
+      "style": "round",
+      "color": "#F9A8D4",
+      "lens_tint": "rgba(200,130,180,0.2)",
+      "price_cents": 7900,
+      "svg": "round.svg",
+      "fit": {
+        "width_mm": 133,
+        "bridge_mm": 19,
+        "temple_mm": 142
+      },
+      "glb": "round-tortoise.glb",
+      "render_mode": "glb3d",
+      "description": "Spring seasonal frame \u2014 soft blossom pink acetate, round silhouette",
+      "season": "spring"
+    },
+    {
+      "id": "summer_sunset_gradient",
+      "name": "Summer Sunset Gradient",
+      "brand": "BeeAR Seasonal",
+      "category": "glasses",
+      "style": "aviator",
+      "color": "#F97316",
+      "lens_tint": "rgba(249,115,22,0.3)",
+      "price_cents": 8900,
+      "svg": "aviator.svg",
+      "fit": {
+        "width_mm": 141,
+        "bridge_mm": 18,
+        "temple_mm": 142
+      },
+      "glb": "aviator-gold.glb",
+      "render_mode": "glb3d",
+      "description": "Summer seasonal frame \u2014 warm sunset gradient, aviator silhouette",
+      "season": "summer"
+    },
+    {
+      "id": "autumn_maple_brown",
+      "name": "Autumn Maple Brown",
+      "brand": "BeeAR Seasonal",
+      "category": "glasses",
+      "style": "wayfarer",
+      "color": "#92400E",
+      "lens_tint": "rgba(120,60,20,0.25)",
+      "price_cents": 8200,
+      "svg": "wayfarer.svg",
+      "fit": {
+        "width_mm": 139,
+        "bridge_mm": 19,
+        "temple_mm": 145
+      },
+      "glb": "wayfarer-black.glb",
+      "render_mode": "glb3d",
+      "description": "Autumn seasonal frame \u2014 rich maple brown wood finish, wayfarer silhouette",
+      "season": "autumn"
+    },
+    {
+      "id": "winter_frost_white",
+      "name": "Winter Frost White",
+      "brand": "BeeAR Seasonal",
+      "category": "glasses",
+      "style": "cat_eye",
+      "color": "#F1F5F9",
+      "lens_tint": "rgba(200,210,230,0.18)",
+      "price_cents": 8500,
+      "svg": "cateye.svg",
+      "fit": {
+        "width_mm": 136,
+        "bridge_mm": 17,
+        "temple_mm": 140
+      },
+      "glb": "cateye-rose.glb",
+      "render_mode": "glb3d",
+      "description": "Winter seasonal frame \u2014 frost white acetate, cat-eye silhouette",
+      "season": "winter"
     }
   ],
   "person_models": [

@@ -1,0 +1,10 @@
+{
+  "sku": "autumn_maple_brown",
+  "name": "Autumn Maple Brown",
+  "type": "frame",
+  "material": "wood",
+  "color": "maple_brown",
+  "shape": "wayfarer",
+  "model_path": "models/wayfarer.glb",
+  "texture_path": "textures/maple_brown.png"
+}

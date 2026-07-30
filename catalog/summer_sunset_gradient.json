@@ -1,0 +1,10 @@
+{
+  "sku": "summer_sunset_gradient",
+  "name": "Summer Sunset Gradient",
+  "type": "frame",
+  "material": "acetate",
+  "color": "sunset_gradient",
+  "shape": "aviator",
+  "model_path": "models/aviator.glb",
+  "texture_path": "textures/sunset_gradient.png"
+}

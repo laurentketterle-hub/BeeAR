@@ -1,0 +1,10 @@
+{
+  "sku": "spring_blossom_pink",
+  "name": "Spring Blossom Pink",
+  "type": "frame",
+  "material": "acetate",
+  "color": "blossom_pink",
+  "shape": "round",
+  "model_path": "models/round.glb",
+  "texture_path": "textures/blossom_pink.png"
+}
