@@ -897,6 +897,219 @@ document.getElementById("pd").oninput = (e) => {
   updateMeta();
 };
 
+
+// ===================================================================
+// Enhanced Snapshot Gallery — offline-first, share link stub
+// Closes #9
+// ===================================================================
+
+const SHARE_STORE_KEY = "beear_share_links_v1";
+
+function shareKey() {
+  return SHARE_STORE_KEY;
+}
+
+function loadShares() {
+  try {
+    return JSON.parse(localStorage.getItem(shareKey()) || "[]");
+  } catch {
+    return [];
+  }
+}
+
+function saveShares(items) {
+  localStorage.setItem(shareKey(), JSON.stringify(items.slice(0, 50)));
+}
+
+// Generate a deterministic share ID from snapshot data (first 12 chars of hash)
+function generateShareId(dataUrl) {
+  // Simple hash from the base64 data portion
+  const b64 = dataUrl.split(",")[1] || "";
+  let hash = 0;
+  for (let i = 0; i < Math.min(b64.length, 500); i++) {
+    hash = ((hash << 5) - hash) + b64.charCodeAt(i);
+    hash |= 0; // Convert to 32bit int
+  }
+  return Math.abs(hash).toString(36).slice(0, 12);
+}
+
+// Create a shareable link for a snapshot
+function shareSnapshot(itemId) {
+  const items = loadGallery();
+  const item = items.find((it) => it.id === itemId);
+  if (!item) return;
+  
+  const shareId = generateShareId(item.data);
+  
+  // Store share metadata locally
+  const shares = loadShares();
+  const existing = shares.find((s) => s.shareId === shareId);
+  if (!existing) {
+    shares.unshift({
+      shareId,
+      itemId: item.id,
+      frame: item.frame,
+      pdMm: item.pdMm,
+      created: Date.now(),
+    });
+    saveShares(shares);
+  }
+  
+  // Build a shareable URL stub (copy to clipboard if available)
+  const shareUrl = `${window.location.origin}${window.location.pathname}?share=${shareId}`;
+  
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(shareUrl).then(() => {
+      showToast("Share link copied to clipboard!");
+    }).catch(() => {
+      showToast("Share link: " + shareUrl);
+    });
+  } else {
+    // Fallback: prompt
+    const input = document.createElement("input");
+    input.value = shareUrl;
+    document.body.appendChild(input);
+    input.select();
+    document.execCommand("copy");
+    document.body.removeChild(input);
+    showToast("Share link copied!");
+  }
+}
+
+// Toast notification helper
+function showToast(msg) {
+  let toast = document.getElementById("snap-toast");
+  if (!toast) {
+    toast = document.createElement("div");
+    toast.id = "snap-toast";
+    toast.style.cssText = "position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#333;color:#fff;padding:10px 20px;border-radius:8px;z-index:9999;font-size:0.9rem;transition:opacity 0.3s;pointer-events:none;";
+    document.body.appendChild(toast);
+  }
+  toast.textContent = msg;
+  toast.style.opacity = "1";
+  clearTimeout(toast._timeout);
+  toast._timeout = setTimeout(() => { toast.style.opacity = "0"; }, 2500);
+}
+
+// Enhanced renderGallery with share buttons and offline indicator
+function renderGalleryEnhanced() {
+  const items = loadGallery();
+  const galleryDiv = document.getElementById("gallery");
+  if (!galleryDiv) return;
+  
+  if (!items.length) {
+    galleryDiv.innerHTML = '<p class="muted small">No snapshots yet — click Snapshot to capture</p>';
+    return;
+  }
+  
+  // Add offline indicator
+  const offlineBanner = !navigator.onLine 
+    ? '<div style="background:#fff3cd;color:#856404;padding:4px 8px;border-radius:4px;margin-bottom:8px;font-size:0.8rem;">📴 Offline — snapshots saved locally</div>'
+    : '';
+  
+  galleryDiv.innerHTML = offlineBanner + items
+    .map((it, idx) =>
+      `<div class="shot">
+        <img src="${it.data}" alt="Snapshot ${idx + 1}" loading="lazy"/>
+        <div class="shot-actions">
+          <button data-id="${it.id}" class="btn tiny share-btn" title="Share">📤</button>
+          <button data-id="${it.id}" class="btn tiny del" title="Delete">×</button>
+        </div>
+        <div class="shot-meta">${it.frame || "none"} · PD ${it.pdMm || 64}mm</div>
+      </div>`
+    )
+    .join("");
+  
+  // Bind delete buttons
+  galleryDiv.querySelectorAll(".del").forEach((btn) => {
+    btn.onclick = () => {
+      const id = Number(btn.getAttribute("data-id"));
+      saveGallery(loadGallery().filter((x) => x.id !== id));
+      renderGalleryEnhanced();
+    };
+  });
+  
+  // Bind share buttons
+  galleryDiv.querySelectorAll(".share-btn").forEach((btn) => {
+    btn.onclick = () => {
+      const id = Number(btn.getAttribute("data-id"));
+      shareSnapshot(id);
+    };
+  });
+  
+  // Listen for online/offline events to update banner
+  if (!window._galleryOnlineListener) {
+    window._galleryOnlineListener = true;
+    window.addEventListener("online", () => renderGalleryEnhanced());
+    window.addEventListener("offline", () => renderGalleryEnhanced());
+    window.addEventListener("storage", (e) => {
+      if (e.key === galleryKey()) renderGalleryEnhanced();
+    });
+  }
+}
+
+// Restore shared snapshot on page load
+function restoreSharedSnapshot() {
+  const params = new URLSearchParams(window.location.search);
+  const shareId = params.get("share");
+  if (!shareId) return;
+  
+  const shares = loadShares();
+  const share = shares.find((s) => s.shareId === shareId);
+  if (!share) return;
+  
+  const items = loadGallery();
+  const item = items.find((it) => it.id === share.itemId);
+  if (!item) return;
+  
+  // Show a notification that a shared snapshot was loaded
+  setTimeout(() => {
+    showToast("Shared snapshot loaded: " + (share.frame || "snapshot") + " · PD " + share.pdMm + "mm");
+  }, 1000);
+  
+  // Clean URL
+  if (window.history && window.history.replaceState) {
+    window.history.replaceState({}, document.title, window.location.pathname);
+  }
+}
+
+// Override the original renderGallery with enhanced version
+// (Keep original for backward compat, but wire up enhanced version)
+const _origRenderGallery = renderGallery;
+renderGallery = function() { renderGalleryEnhanced(); };
+
+// Enhanced snapshot with share prompt
+const _origSnapshot = snapshot;
+snapshot = async function() {
+  await _origSnapshot();
+  // Show share option after capture
+  const items = loadGallery();
+  if (items.length > 0) {
+    setTimeout(() => {
+      const latestId = items[0].id;
+      const galleryDiv = document.getElementById("gallery");
+      if (galleryDiv) {
+        const shareBtns = galleryDiv.querySelectorAll(".share-btn");
+        if (shareBtns.length > 0) {
+          shareBtns[0].style.animation = "pulse 1s ease-in-out 3";
+        }
+      }
+    }, 300);
+  }
+};
+
+// Initialize share restore on load
+document.addEventListener("DOMContentLoaded", () => {
+  restoreSharedSnapshot();
+});
+
+// Call restore immediately if DOM already loaded
+if (document.readyState !== "loading") {
+  restoreSharedSnapshot();
+}
+
+console.log("[BeeAR] Enhanced snapshot gallery + share link stub loaded (closes #9)");
+
 // Update interaction execution pipeline on primary modal acknowledgement
 document.getElementById("consent-ok").onclick = () => {
   const cb = document.getElementById("photo-consent-cb");

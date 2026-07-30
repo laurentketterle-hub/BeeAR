@@ -143,3 +143,65 @@ html, body { margin: 0; height: 100%; background: var(--bg); color: var(--text);
   font-size: 0.9rem;
   margin-top: 12px;
 }
+
+/* Enhanced Snapshot Gallery styles (#9) */
+.gallery .shot {
+  position: relative;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: rgba(0,0,0,0.3);
+}
+.gallery .shot img {
+  width: 100%;
+  display: block;
+}
+.gallery .shot-actions {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  display: flex;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.gallery .shot:hover .shot-actions {
+  opacity: 1;
+}
+.gallery .shot .btn.tiny {
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  border: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+.gallery .shot .btn.tiny:hover {
+  background: rgba(0,0,0,0.8);
+}
+.gallery .shot .btn.tiny.share-btn {
+  background: rgba(59,130,246,0.7);
+}
+.gallery .shot .btn.tiny.share-btn:hover {
+  background: rgba(37,99,235,0.9);
+}
+.gallery .shot-meta {
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  color: #aaa;
+  background: rgba(0,0,0,0.5);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
