@@ -1,0 +1,22 @@
+{
+  "sku": "FRM-SSN-AUTUMN_L",
+  "name": "Autumn Leaves Frame",
+  "description": "Warm maple leaf motif in gold and orange",
+  "season": "autumn",
+  "category": "seasonal",
+  "type": "frame",
+  "assets": {
+    "svg": "catalog/frames/autumn_leaves.svg",
+    "glb": "catalog/frames/autumn_leaves.glb",
+    "thumbnail": "catalog/frames/autumn_leaves_thumb.png"
+  },
+  "tags": [
+    "seasonal",
+    "autumn",
+    "frame"
+  ],
+  "price": {
+    "mrg": 25
+  },
+  "available": true
+}

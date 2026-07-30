@@ -1,0 +1,22 @@
+{
+  "sku": "FRM-SSN-SUMMER_S",
+  "name": "Summer Sunset Frame",
+  "description": "Gradient coral-to-gold with sunburst corners",
+  "season": "summer",
+  "category": "seasonal",
+  "type": "frame",
+  "assets": {
+    "svg": "catalog/frames/summer_sunset.svg",
+    "glb": "catalog/frames/summer_sunset.glb",
+    "thumbnail": "catalog/frames/summer_sunset_thumb.png"
+  },
+  "tags": [
+    "seasonal",
+    "summer",
+    "frame"
+  ],
+  "price": {
+    "mrg": 25
+  },
+  "available": true
+}

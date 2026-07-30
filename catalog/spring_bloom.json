@@ -1,0 +1,22 @@
+{
+  "sku": "FRM-SSN-SPRING_B",
+  "name": "Spring Bloom Frame",
+  "description": "Cherry blossom and floral vine border",
+  "season": "spring",
+  "category": "seasonal",
+  "type": "frame",
+  "assets": {
+    "svg": "catalog/frames/spring_bloom.svg",
+    "glb": "catalog/frames/spring_bloom.glb",
+    "thumbnail": "catalog/frames/spring_bloom_thumb.png"
+  },
+  "tags": [
+    "seasonal",
+    "spring",
+    "frame"
+  ],
+  "price": {
+    "mrg": 25
+  },
+  "available": true
+}

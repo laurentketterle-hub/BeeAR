@@ -1,0 +1,22 @@
+{
+  "sku": "FRM-SSN-WINTER_F",
+  "name": "Winter Frost Frame",
+  "description": "Icy crystalline pattern with snowflake edges",
+  "season": "winter",
+  "category": "seasonal",
+  "type": "frame",
+  "assets": {
+    "svg": "catalog/frames/winter_frost.svg",
+    "glb": "catalog/frames/winter_frost.glb",
+    "thumbnail": "catalog/frames/winter_frost_thumb.png"
+  },
+  "tags": [
+    "seasonal",
+    "winter",
+    "frame"
+  ],
+  "price": {
+    "mrg": 25
+  },
+  "available": true
+}
