@@ -1,0 +1,17 @@
+{
+  "sku": "earring_hoop_gold",
+  "name": "Hoop Earring Gold",
+  "type": "accessory",
+  "category": "earring",
+  "material": "gold_plated",
+  "color": "gold",
+  "anchor": "ear_lobe",
+  "offset_mm": {
+    "x": 0,
+    "y": -12,
+    "z": 8
+  },
+  "scale": 0.6,
+  "model_path": "models/hoop_earring.glb",
+  "texture_path": "textures/gold_plated.png"
+}

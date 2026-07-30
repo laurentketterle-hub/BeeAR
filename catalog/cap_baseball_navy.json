@@ -1,0 +1,17 @@
+{
+  "sku": "cap_baseball_navy",
+  "name": "Baseball Cap Navy",
+  "type": "accessory",
+  "category": "hat",
+  "material": "cotton_twill",
+  "color": "navy",
+  "anchor": "head_top",
+  "offset_mm": {
+    "x": 0,
+    "y": 4,
+    "z": 0
+  },
+  "scale": 1.1,
+  "model_path": "models/cap_baseball.glb",
+  "texture_path": "textures/navy_twill.png"
+}

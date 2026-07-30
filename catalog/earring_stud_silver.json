@@ -1,0 +1,17 @@
+{
+  "sku": "earring_stud_silver",
+  "name": "Stud Earring Silver",
+  "type": "accessory",
+  "category": "earring",
+  "material": "sterling_silver",
+  "color": "silver",
+  "anchor": "ear_lobe",
+  "offset_mm": {
+    "x": 0,
+    "y": -8,
+    "z": 6
+  },
+  "scale": 0.4,
+  "model_path": "models/stud_earring.glb",
+  "texture_path": "textures/silver_polished.png"
+}
