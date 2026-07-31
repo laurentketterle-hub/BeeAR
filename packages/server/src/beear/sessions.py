@@ -9,12 +9,17 @@ from typing import Any
 _sessions: dict[str, dict[str, Any]] = {}
 
 
-def create_session(frame_ids: list[str] | None = None, note: str = "") -> dict[str, Any]:
+def create_session(
+    frame_ids: list[str] | None = None,
+    note: str = "",
+    frames: list[dict[str, Any]] | None = None,
+) -> dict[str, Any]:
     sid = uuid.uuid4().hex[:12]
     now = time.time()
     row = {
         "id": sid,
         "frame_ids": list(frame_ids or []),
+        "frames": list(frames or []),
         "wishlist": [],
         "note": note or "",
         "created_at": now,
@@ -63,3 +68,22 @@ def add_wishlist(session_id: str, frame_id: str) -> dict[str, Any] | None:
 def list_sessions(limit: int = 50) -> list[dict[str, Any]]:
     rows = sorted(_sessions.values(), key=lambda r: r.get("updated_at", 0), reverse=True)
     return [dict(r) for r in rows[: max(1, min(limit, 200))]]
+
+
+def get_wishlist() -> list[dict[str, Any]]:
+    """Aggregate all wishlist items across all sessions.
+
+    Returns a flat list of {frame_id, session_id, added_at} entries,
+    ordered by most recently updated sessions first.
+    """
+    items: list[dict[str, Any]] = []
+    for row in list_sessions(limit=200):
+        sid = row["id"]
+        updated = row.get("updated_at", 0)
+        for fid in row.get("wishlist", []):
+            items.append({
+                "frame_id": fid,
+                "session_id": sid,
+                "added_at": updated,
+            })
+    return items

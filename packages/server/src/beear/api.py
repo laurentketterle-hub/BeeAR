@@ -51,6 +51,7 @@ class CompareRequest(BaseModel):
 
 class SessionCreate(BaseModel):
     frame_ids: list[str] = Field(default_factory=list)
+    frames: list[dict[str, Any]] = Field(default_factory=list)
     note: str = ""
 
 
@@ -204,7 +205,7 @@ def api_compare(body: CompareRequest) -> dict:
 
 @app.post("/api/sessions")
 def api_session_create(body: SessionCreate) -> dict:
-    return sess.create_session(body.frame_ids, body.note)
+    return sess.create_session(body.frame_ids, body.note, frames=body.frames)
 
 
 @app.get("/api/sessions")
@@ -241,6 +242,13 @@ def api_wishlist_add(session_id: str, body: WishlistAdd) -> dict:
     if not row:
         raise HTTPException(404, "session not found")
     return row
+
+
+@app.get("/api/wishlist")
+def api_wishlist() -> dict:
+    """Return all wishlist items aggregated across all sessions."""
+    items = sess.get_wishlist()
+    return {"wishlist": items, "count": len(items)}
 
 
 if SVG_DIR.is_dir():
