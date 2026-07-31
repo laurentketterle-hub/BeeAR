@@ -4,7 +4,8 @@ import hashlib
 import json
 from typing import Any
 
-from beear import __version__, sessions as sess
+from beear import __version__
+from beear import sessions as sess
 from beear.catalog import get_frame, load_catalog
 from beear.config import GLB_DIR, SVG_DIR, WEB_ROOT
 from beear.tryon import compare_frames, estimate_fit, landmark_box
