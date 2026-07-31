@@ -28,12 +28,12 @@ def _is_number(value: Any) -> bool:
 def _validate_catalog(data: dict[str, Any]) -> None:
     frames = data.get("frames")
     if not isinstance(frames, list) or not frames:
-        raise ValueError("frames must be a non-empty list")
+        raise TypeError("frames must be a non-empty list")
 
     seen_ids: set[str] = set()
     for index, frame in enumerate(frames):
         if not isinstance(frame, dict):
-            raise ValueError(f"frames[{index}] must be an object")
+            raise TypeError(f"frames[{index}] must be an object")
 
         for key in _REQUIRED_FRAME_STRINGS:
             value = frame.get(key)
@@ -55,7 +55,7 @@ def _validate_catalog(data: dict[str, Any]) -> None:
 
         fit = frame.get("fit")
         if not isinstance(fit, dict):
-            raise ValueError(f"frames[{index}].fit must be an object")
+            raise TypeError(f"frames[{index}].fit must be an object")
         for key in _REQUIRED_FIT_NUMBERS:
             value = fit.get(key)
             minimum = 1 if key == "width_mm" else 0

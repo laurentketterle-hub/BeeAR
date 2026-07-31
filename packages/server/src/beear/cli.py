@@ -309,7 +309,7 @@ def tryon_glb(frame_id: str = typer.Argument(...)) -> None:
 def wishlist_cmd(
     frame_ids: str = typer.Option("aviator_gold,wayfarer_black", "--frames", "-f"),
     note: str = typer.Option("demo wishlist", "--note"),
-    out: Path | None = typer.Option(None, "--out", "-o"),
+    out: Path | None = typer.Option(None, "--out", "-o"),  # noqa: B008
 ) -> None:
     """Create a session wishlist and export JSON (privacy-safe frame ids only)."""
     import json
@@ -339,6 +339,7 @@ def serve_cmd(
     port: int = typer.Option(8860, "--port"),
 ) -> None:
     import uvicorn
+
     from beear.api import app as fastapi_app
 
     rprint(f"BeeAR → http://{host}:{port}")
