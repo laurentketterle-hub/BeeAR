@@ -1810,6 +1810,238 @@
       },
       "render_mode": "glb3d",
       "description": "Rose gold round frames \u2014 catalog SKU cycle 16q"
+    },
+    {
+      "id": "pantos_crystal",
+      "name": "Pantos Crystal",
+      "brand": "BeeAR Studio",
+      "category": "glasses",
+      "style": "pantos",
+      "color": "#E8E8E8",
+      "lens_tint": "rgba(240,245,255,0.18)",
+      "price_cents": 12800,
+      "svg": "round.svg",
+      "glb": "round-crystal-transparent.glb",
+      "fit": {
+        "width_mm": 137,
+        "bridge_mm": 20,
+        "temple_mm": 143
+      },
+      "studio_fit": {
+        "scale": 0.99,
+        "y": -0.006,
+        "z": 0.015
+      },
+      "ar_fit": {
+        "scale": 0.99,
+        "y": -0.002,
+        "pitch": 0.01,
+        "yaw": 0
+      },
+      "description": "Crystal-clear pantos shape \u2014 catalog SKU cycle 17a"
+    },
+    {
+      "id": "oversized_square_tortoise",
+      "name": "Oversized Square Tortoise",
+      "brand": "BeeAR Studio",
+      "category": "glasses",
+      "style": "square",
+      "color": "#8B6914",
+      "lens_tint": "rgba(139,105,20,0.22)",
+      "price_cents": 13400,
+      "svg": "square.svg",
+      "glb": "square-tortoise-vintage.glb",
+      "fit": {
+        "width_mm": 144,
+        "bridge_mm": 19,
+        "temple_mm": 148
+      },
+      "studio_fit": {
+        "scale": 1.03,
+        "y": -0.008,
+        "z": 0.02
+      },
+      "ar_fit": {
+        "scale": 1.02,
+        "y": -0.003,
+        "pitch": 0.02,
+        "yaw": 0
+      },
+      "description": "Bold oversized square with classic tortoise pattern \u2014 catalog SKU cycle 17b"
+    },
+    {
+      "id": "cat_eye_tortoise_shell",
+      "name": "Cat-Eye Tortoise Shell",
+      "brand": "BeeAR Studio",
+      "category": "glasses",
+      "style": "cat-eye",
+      "color": "#C4956A",
+      "lens_tint": "rgba(196,149,106,0.2)",
+      "price_cents": 14100,
+      "svg": "cat-eye.svg",
+      "glb": "cateye-tortoise-warm.glb",
+      "fit": {
+        "width_mm": 135,
+        "bridge_mm": 16,
+        "temple_mm": 140
+      },
+      "studio_fit": {
+        "scale": 0.97,
+        "y": -0.004,
+        "z": 0.012
+      },
+      "ar_fit": {
+        "scale": 0.97,
+        "y": -0.001,
+        "pitch": 0.015,
+        "yaw": 0
+      },
+      "description": "Warm tortoise-shell cat-eye with vintage charm \u2014 catalog SKU cycle 17c"
+    },
+    {
+      "id": "wayfarer_crystal_blush",
+      "name": "Wayfarer Crystal Blush",
+      "brand": "BeeAR Studio",
+      "category": "glasses",
+      "style": "wayfarer",
+      "color": "#F4C2C2",
+      "lens_tint": "rgba(244,194,194,0.16)",
+      "price_cents": 11900,
+      "svg": "wayfarer.svg",
+      "glb": "wayfarer-blush-translucent.glb",
+      "fit": {
+        "width_mm": 140,
+        "bridge_mm": 17,
+        "temple_mm": 145
+      },
+      "studio_fit": {
+        "scale": 1.0,
+        "y": -0.005,
+        "z": 0.018
+      },
+      "ar_fit": {
+        "scale": 1.0,
+        "y": -0.002,
+        "pitch": 0.01,
+        "yaw": 0
+      },
+      "description": "Translucent blush-toned wayfarer with soft crystal finish \u2014 catalog SKU cycle 17d"
+    },
+    {
+      "id": "round_sunset_gradient",
+      "name": "Round Sunset Gradient",
+      "brand": "BeeAR Studio",
+      "category": "glasses",
+      "style": "round",
+      "color": "#FF6B35",
+      "lens_tint": "rgba(255,107,53,0.25)",
+      "price_cents": 13200,
+      "svg": "round.svg",
+      "glb": "round-sunset-gradient.glb",
+      "fit": {
+        "width_mm": 133,
+        "bridge_mm": 21,
+        "temple_mm": 140
+      },
+      "studio_fit": {
+        "scale": 0.96,
+        "y": -0.003,
+        "z": 0.014
+      },
+      "ar_fit": {
+        "scale": 0.96,
+        "y": -0.001,
+        "pitch": 0.008,
+        "yaw": 0
+      },
+      "description": "Warm sunset gradient lenses on classic round metal \u2014 catalog SKU cycle 17e"
+    },
+    {
+      "id": "aviator_silver_mirror",
+      "name": "Aviator Silver Mirror",
+      "brand": "BeeAR Studio",
+      "category": "glasses",
+      "style": "aviator",
+      "color": "#C0C0C0",
+      "lens_tint": "rgba(192,192,192,0.35)",
+      "price_cents": 14800,
+      "svg": "aviator.svg",
+      "glb": "aviator-silver-mirrored.glb",
+      "fit": {
+        "width_mm": 142,
+        "bridge_mm": 14,
+        "temple_mm": 147
+      },
+      "studio_fit": {
+        "scale": 1.02,
+        "y": -0.007,
+        "z": 0.022
+      },
+      "ar_fit": {
+        "scale": 1.01,
+        "y": -0.003,
+        "pitch": 0.025,
+        "yaw": 0
+      },
+      "description": "Classic aviator with high-reflection silver mirror lenses \u2014 catalog SKU cycle 17f"
+    },
+    {
+      "id": "rectangle_two_tone_blue",
+      "name": "Rectangle Two-Tone Blue",
+      "brand": "BeeAR Studio",
+      "category": "glasses",
+      "style": "rectangle",
+      "color": "#1E3A5F",
+      "lens_tint": "rgba(30,58,95,0.22)",
+      "price_cents": 12500,
+      "svg": "rectangle.svg",
+      "glb": "rectangle-twotone-navy.glb",
+      "fit": {
+        "width_mm": 139,
+        "bridge_mm": 18,
+        "temple_mm": 143
+      },
+      "studio_fit": {
+        "scale": 0.99,
+        "y": -0.005,
+        "z": 0.016
+      },
+      "ar_fit": {
+        "scale": 0.99,
+        "y": -0.002,
+        "pitch": 0.012,
+        "yaw": 0
+      },
+      "description": "Two-tone navy rectangle with gradient shading \u2014 catalog SKU cycle 17g"
+    },
+    {
+      "id": "oval_pearl_white",
+      "name": "Oval Pearl White",
+      "brand": "BeeAR Studio",
+      "category": "glasses",
+      "style": "oval",
+      "color": "#F5F0E8",
+      "lens_tint": "rgba(245,240,232,0.12)",
+      "price_cents": 13600,
+      "svg": "oval.svg",
+      "glb": "oval-pearl-lustre.glb",
+      "fit": {
+        "width_mm": 134,
+        "bridge_mm": 19,
+        "temple_mm": 141
+      },
+      "studio_fit": {
+        "scale": 0.97,
+        "y": -0.004,
+        "z": 0.013
+      },
+      "ar_fit": {
+        "scale": 0.97,
+        "y": -0.001,
+        "pitch": 0.01,
+        "yaw": 0
+      },
+      "description": "Pearlescent white oval with subtle lustre finish \u2014 catalog SKU cycle 17h"
     }
   ],
   "person_models": [
