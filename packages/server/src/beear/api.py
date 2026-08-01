@@ -65,6 +65,10 @@ class WishlistAdd(BaseModel):
     frame_id: str
 
 
+class WishlistRemove(BaseModel):
+    frame_id: str
+
+
 CATALOG_CACHE_CONTROL = "public, max-age=300, stale-while-revalidate=3600"
 
 
@@ -249,6 +253,20 @@ def api_wishlist() -> dict:
     """Return all wishlist items aggregated across all sessions."""
     items = sess.get_wishlist()
     return {"wishlist": items, "count": len(items)}
+
+@app.delete("/api/sessions/{session_id}/wishlist")
+def api_wishlist_remove(session_id: str, body: WishlistRemove) -> dict:
+    row = sess.remove_wishlist(session_id, body.frame_id)
+    if not row:
+        raise HTTPException(404, "session not found")
+    return row
+
+
+@app.delete("/api/sessions/{session_id}")
+def api_session_delete(session_id: str) -> dict:
+    if not sess.delete_session(session_id):
+        raise HTTPException(404, "session not found")
+    return {"deleted": True, "id": session_id}
 
 
 if SVG_DIR.is_dir():

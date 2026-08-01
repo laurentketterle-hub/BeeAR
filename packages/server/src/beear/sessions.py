@@ -87,3 +87,29 @@ def get_wishlist() -> list[dict[str, Any]]:
                 "added_at": updated,
             })
     return items
+
+def delete_session(session_id: str) -> bool:
+    if session_id in _sessions:
+        del _sessions[session_id]
+        return True
+    return False
+
+
+def prune_expired(ttl_seconds: int = 86400) -> int:
+    """Remove sessions older than ttl_seconds (default 24h). Returns count of pruned sessions."""
+    now = time.time()
+    expired = [sid for sid, row in _sessions.items() if now - row.get("updated_at", 0) > ttl_seconds]
+    for sid in expired:
+        del _sessions[sid]
+    return len(expired)
+
+
+def remove_wishlist(session_id: str, frame_id: str) -> dict[str, Any] | None:
+    row = _sessions.get(session_id)
+    if not row:
+        return None
+    wl = row.get("wishlist", [])
+    if frame_id in wl:
+        wl.remove(frame_id)
+    row["updated_at"] = time.time()
+    return dict(row)
