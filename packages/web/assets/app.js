@@ -833,6 +833,35 @@ async function snapshot() {
   renderGallery();
 }
 
+function showToast(msg) {
+  let toast = document.getElementById("toast");
+  if (!toast) {
+    toast = document.createElement("div");
+    toast.id = "toast";
+    toast.style.cssText =
+      "position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a1a2e;color:#f5c518;padding:10px 20px;border-radius:8px;font-size:14px;z-index:9999;border:1px solid #f5c518;transition:opacity .3s;";
+    document.body.appendChild(toast);
+  }
+  toast.textContent = msg;
+  toast.style.opacity = "1";
+  clearTimeout(toast._timeout);
+  toast._timeout = setTimeout(() => {
+    toast.style.opacity = "0";
+  }, 2000);
+}
+
+function loadFromShareHash() {
+  const hash = location.hash;
+  if (!hash.startsWith("#share=")) return null;
+  try {
+    const encoded = hash.slice(7);
+    const data = JSON.parse(atob(encoded));
+    return data;
+  } catch {
+    return null;
+  }
+}
+
 function renderGallery() {
   const items = loadGallery();
   if (!items.length) {
@@ -842,7 +871,7 @@ function renderGallery() {
   galleryEl.innerHTML = items
     .map(
       (it) =>
-        `<div class="shot"><img src="${it.data}" alt=""/><button data-id="${it.id}" class="btn tiny del">×</button></div>`,
+        `<div class="shot"><img src="${it.data}" alt=""/><button data-id="${it.id}" class="btn tiny del">×</button><button data-id="${it.id}" class="btn tiny share" title="Copy share link">🔗</button></div>`,
     )
     .join("");
   galleryEl.querySelectorAll(".del").forEach((btn) => {
@@ -850,6 +879,36 @@ function renderGallery() {
       const id = Number(btn.getAttribute("data-id"));
       saveGallery(loadGallery().filter((x) => x.id !== id));
       renderGallery();
+    };
+  });
+  galleryEl.querySelectorAll(".share").forEach((btn) => {
+    btn.onclick = async () => {
+      const id = Number(btn.getAttribute("data-id"));
+      const item = loadGallery().find((x) => x.id === id);
+      if (!item) return;
+      const shareData = {
+        frame: item.frame,
+        frameB: item.frameB,
+        pdMm: item.pdMm,
+        data: item.data,
+        v: 1,
+      };
+      const hash = btoa(JSON.stringify(shareData));
+      const url = `${location.origin}${location.pathname}#share=${hash}`;
+      try {
+        await navigator.clipboard.writeText(url);
+        showToast("Share link copied! 📋");
+      } catch {
+        const ta = document.createElement("textarea");
+        ta.value = url;
+        ta.style.position = "fixed";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        document.body.removeChild(ta);
+        showToast("Share link copied! 📋");
+      }
     };
   });
 }
@@ -921,6 +980,21 @@ Promise.all([
   }),
 ])
   .then(() => {
+    // Load shared snapshot from URL hash if present
+    const shared = loadFromShareHash();
+    if (shared && shared.data) {
+      const items = loadGallery();
+      items.unshift({
+        id: Date.now(),
+        frame: shared.frame || "shared",
+        frameB: shared.frameB,
+        pdMm: shared.pdMm || 64,
+        data: shared.data,
+      });
+      saveGallery(items);
+      renderGallery();
+      galleryEl.classList.remove("hidden");
+    }
     startDemo();
     loop();
     if (!Object.values(threeState.loading).some(Boolean)) setStageLoad(null);
