@@ -16,24 +16,27 @@ export function drawFrameAt(ctx, frame, midX, midY, angle, pdPx, pdMm, xOffset =
   if (!frame) return;
   const { overlayW, overlayH } = overlaySize(frame, pdPx, pdMm);
   const cat = frame.category;
+  const ar = frame.ar_fit || {};
+  const arY = Number(ar.y) || 0;
+  const arScale = Number(ar.scale) || 1;
   ctx.save();
   const yOff =
     cat === "accessory" && frame.style === "hat"
-      ? -pdPx * 0.9
+      ? -pdPx * 0.9 + arY * pdPx
       : cat === "accessory" && frame.style === "necklace"
-        ? pdPx * 1.35
-        : pdPx * 0.02;
+        ? pdPx * 1.35 + arY * pdPx
+        : pdPx * 0.02 + arY * pdPx;
   ctx.translate(midX + xOffset, midY + yOff);
   ctx.rotate(angle);
   if (frame.style === "earring") {
-    ctx.translate(-pdPx * 1.15, pdPx * 0.5);
-    paintFrameShape(ctx, frame, overlayW * 0.35, overlayH * 1.2);
+    ctx.translate(-pdPx * 1.15, pdPx * (0.5 + arY));
+    paintFrameShape(ctx, frame, overlayW * 0.35 * arScale, overlayH * 1.2 * arScale);
   } else if (frame.style === "hat") {
-    paintFrameShape(ctx, frame, overlayW * 1.35, overlayH * 0.9);
+    paintFrameShape(ctx, frame, overlayW * 1.35 * arScale, overlayH * 0.9 * arScale);
   } else if (frame.style === "necklace") {
-    paintFrameShape(ctx, frame, overlayW * 0.5, overlayH * 1.4);
+    paintFrameShape(ctx, frame, overlayW * 0.5 * arScale, overlayH * 1.4 * arScale);
   } else {
-    paintFrameShape(ctx, frame, overlayW, overlayH);
+    paintFrameShape(ctx, frame, overlayW * arScale, overlayH * arScale);
   }
   ctx.restore();
 }

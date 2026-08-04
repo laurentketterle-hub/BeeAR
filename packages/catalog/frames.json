@@ -320,7 +320,19 @@
         "width_mm": 130,
         "bridge_mm": 18,
         "temple_mm": 0
-      }
+      },
+      "studio_fit": {
+        "scale": 1.0,
+        "y": -0.005,
+        "z": 0.015
+      },
+      "ar_fit": {
+        "scale": 1.0,
+        "y": 0.0,
+        "pitch": 0.02,
+        "yaw": 0.0
+      },
+      "description": "Clip-on sunglasses — AR anchor: bridge-center, overlays glasses"
     },
     {
       "id": "earring_hoop",
@@ -336,7 +348,47 @@
         "width_mm": 28,
         "bridge_mm": 0,
         "temple_mm": 0
-      }
+      },
+      "studio_fit": {
+        "scale": 1.0,
+        "y": -0.08,
+        "z": 0.01
+      },
+      "ar_fit": {
+        "scale": 1.0,
+        "y": -0.06,
+        "pitch": 0.0,
+        "yaw": 0.0
+      },
+      "description": "Classic gold hoop earring — AR anchor: earlobe (left-side)"
+    },
+    {
+      "id": "earring_stud",
+      "name": "Diamond Stud (L)",
+      "brand": "BeeAR Accessories",
+      "category": "accessory",
+      "style": "earring",
+      "color": "#E2E8F0",
+      "lens_tint": "transparent",
+      "price_cents": 2800,
+      "svg": "earring.svg",
+      "fit": {
+        "width_mm": 14,
+        "bridge_mm": 0,
+        "temple_mm": 0
+      },
+      "studio_fit": {
+        "scale": 0.85,
+        "y": -0.08,
+        "z": 0.005
+      },
+      "ar_fit": {
+        "scale": 0.85,
+        "y": -0.055,
+        "pitch": 0.0,
+        "yaw": 0.0
+      },
+      "description": "Compact diamond stud earring — subtle AR accent at earlobe"
     },
     {
       "id": "hat_cap",
@@ -352,7 +404,47 @@
         "width_mm": 180,
         "bridge_mm": 0,
         "temple_mm": 0
-      }
+      },
+      "studio_fit": {
+        "scale": 1.05,
+        "y": 0.0,
+        "z": 0.02
+      },
+      "ar_fit": {
+        "scale": 1.05,
+        "y": 0.0,
+        "pitch": -0.02,
+        "yaw": 0.0
+      },
+      "description": "Classic baseball cap — AR anchor: top of head"
+    },
+    {
+      "id": "hat_beanie",
+      "name": "Beanie Slouch",
+      "brand": "BeeAR Accessories",
+      "category": "accessory",
+      "style": "hat",
+      "color": "#1E293B",
+      "lens_tint": "transparent",
+      "price_cents": 3900,
+      "svg": "cap.svg",
+      "fit": {
+        "width_mm": 160,
+        "bridge_mm": 0,
+        "temple_mm": 0
+      },
+      "studio_fit": {
+        "scale": 1.02,
+        "y": 0.015,
+        "z": 0.015
+      },
+      "ar_fit": {
+        "scale": 1.02,
+        "y": 0.02,
+        "pitch": -0.03,
+        "yaw": 0.0
+      },
+      "description": "Slouch beanie — AR anchor: crown of head, slightly relaxed"
     },
     {
       "id": "necklace_pendant",
@@ -368,7 +460,19 @@
         "width_mm": 40,
         "bridge_mm": 0,
         "temple_mm": 0
-      }
+      },
+      "studio_fit": {
+        "scale": 1.0,
+        "y": -0.25,
+        "z": 0.005
+      },
+      "ar_fit": {
+        "scale": 1.0,
+        "y": 0.0,
+        "pitch": 0.05,
+        "yaw": 0.0
+      },
+      "description": "Classic pendant necklace — AR anchor: neckline drop"
     },
     {
       "id": "pilot_teal",

@@ -532,12 +532,14 @@ function drawDemoFace(w, h) {
 
 function glbOverlayCenter(frame, metrics) {
   const cat = frame.category;
+  const ar = frame.ar_fit || {};
+  const arY = Number(ar.y) || 0;
   const yOff =
     cat === "accessory" && frame.style === "hat"
-      ? -metrics.pdPx * 0.9
+      ? -metrics.pdPx * 0.9 + arY * metrics.pdPx
       : cat === "accessory" && frame.style === "necklace"
-        ? metrics.pdPx * 1.35
-        : metrics.pdPx * 0.02;
+        ? metrics.pdPx * 1.35 + arY * metrics.pdPx
+        : metrics.pdPx * 0.02 + arY * metrics.pdPx;
   return { x: metrics.midX, y: metrics.midY + yOff };
 }
 
