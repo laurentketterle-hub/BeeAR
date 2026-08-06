@@ -655,6 +655,10 @@ function sendToMesh() {
     .catch(() => {
       tracking = "geometric";
       trackBadge.textContent = t("trackGeo");
+  // Make tracking badge clickable to toggle MediaPipe/geometric
+  trackBadge.style.cursor = "pointer";
+  trackBadge.title = "Click to toggle MediaPipe / geometric tracking";
+  trackBadge.addEventListener("click", toggleMediaPipe);
     })
     .finally(() => {
       meshBusy = false;
@@ -690,13 +694,43 @@ function loop() {
   raf = requestAnimationFrame(loop);
 }
 
+function destroyMediaPipe() {
+  if (faceMesh) {
+    try { faceMesh.close(); } catch (_) {}
+    faceMesh = null;
+  }
+  tracking = "geometric";
+  trackBadge.textContent = t("trackGeo");
+  // Make tracking badge clickable to toggle MediaPipe/geometric
+  trackBadge.style.cursor = "pointer";
+  trackBadge.title = "Click to toggle MediaPipe / geometric tracking";
+  trackBadge.addEventListener("click", toggleMediaPipe);
+  hintEl.textContent = t("hintCam") + " · geometric fallback";
+}
+
+function toggleMediaPipe() {
+  if (mode !== "camera") return;
+  if (tracking === "mediapipe") {
+    destroyMediaPipe();
+  } else {
+    initMediaPipe();
+  }
+}
+
 function initMediaPipe() {
   if (typeof FaceMesh === "undefined") {
     tracking = "geometric";
     trackBadge.textContent = t("trackGeo");
+  // Make tracking badge clickable to toggle MediaPipe/geometric
+  trackBadge.style.cursor = "pointer";
+  trackBadge.title = "Click to toggle MediaPipe / geometric tracking";
+  trackBadge.addEventListener("click", toggleMediaPipe);
+    hintEl.textContent = t("hintCam") + " · MediaPipe CDN not loaded, geometric fallback";
     return;
   }
   try {
+    // Destroy previous instance if any
+    if (faceMesh) { try { faceMesh.close(); } catch (_) {} }
     faceMesh = new FaceMesh({
       locateFile: (file) =>
         `https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/${file}`,
@@ -710,11 +744,14 @@ function initMediaPipe() {
     faceMesh.onResults((results) => {
       const lm = results.multiFaceLandmarks && results.multiFaceLandmarks[0];
       if (!lm) return;
-      face.left = [lm[33].x, lm[33].y];
-      face.right = [lm[263].x, lm[263].y];
+      face.left = [lm[33].x, lm[33].y];   // left eye inner corner (MediaPipe index 33)
+      face.right = [lm[263].x, lm[263].y]; // right eye inner corner (MediaPipe index 263)
       face.source = "mediapipe";
-      tracking = "mediapipe";
-      trackBadge.textContent = t("trackMp");
+      if (tracking !== "mediapipe") {
+        tracking = "mediapipe";
+        trackBadge.textContent = t("trackMp");
+        hintEl.textContent = t("hintCam") + " · MediaPipe Face Mesh";
+      }
     });
     tracking = "mediapipe";
     trackBadge.textContent = t("trackMp");
@@ -723,6 +760,11 @@ function initMediaPipe() {
     faceMesh = null;
     tracking = "geometric";
     trackBadge.textContent = t("trackGeo");
+  // Make tracking badge clickable to toggle MediaPipe/geometric
+  trackBadge.style.cursor = "pointer";
+  trackBadge.title = "Click to toggle MediaPipe / geometric tracking";
+  trackBadge.addEventListener("click", toggleMediaPipe);
+    hintEl.textContent = t("hintCam") + " · geometric fallback (MediaPipe init failed)";
   }
 }
 
