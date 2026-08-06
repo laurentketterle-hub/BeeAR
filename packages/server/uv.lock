@@ -35,7 +35,7 @@ wheels = [
 
 [[package]]
 name = "beear"
-version = "0.4.56"
+version = "0.4.46"
 source = { editable = "." }
 dependencies = [
     { name = "fastapi" },
