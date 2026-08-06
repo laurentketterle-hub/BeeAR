@@ -63,3 +63,23 @@ def add_wishlist(session_id: str, frame_id: str) -> dict[str, Any] | None:
 def list_sessions(limit: int = 50) -> list[dict[str, Any]]:
     rows = sorted(_sessions.values(), key=lambda r: r.get("updated_at", 0), reverse=True)
     return [dict(r) for r in rows[: max(1, min(limit, 200))]]
+
+
+def remove_wishlist(session_id: str, frame_id: str) -> dict[str, Any] | None:
+    """Remove a frame_id from a session's wishlist."""
+    row = _sessions.get(session_id)
+    if not row:
+        return None
+    wl = row.get("wishlist", [])
+    if frame_id in wl:
+        wl.remove(frame_id)
+    row["updated_at"] = time.time()
+    return dict(row)
+
+
+def delete_session(session_id: str) -> bool:
+    """Delete a session. Returns True if the session existed."""
+    if session_id in _sessions:
+        del _sessions[session_id]
+        return True
+    return False

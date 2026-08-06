@@ -243,6 +243,21 @@ def api_wishlist_add(session_id: str, body: WishlistAdd) -> dict:
     return row
 
 
+@app.delete("/api/sessions/{session_id}/wishlist/{frame_id}")
+def api_wishlist_remove(session_id: str, frame_id: str) -> dict:
+    row = sess.remove_wishlist(session_id, frame_id)
+    if not row:
+        raise HTTPException(404, "session not found")
+    return row
+
+
+@app.delete("/api/sessions/{session_id}")
+def api_session_delete(session_id: str) -> dict:
+    if not sess.delete_session(session_id):
+        raise HTTPException(404, "session not found")
+    return {"ok": True, "deleted": session_id}
+
+
 if SVG_DIR.is_dir():
     app.mount("/catalog/svg", StaticFiles(directory=str(SVG_DIR)), name="svg")
 
