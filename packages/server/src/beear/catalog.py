@@ -121,8 +121,7 @@ def search_frames(query: str, limit: int = 20) -> list[dict[str, Any]]:
     hits: list[dict[str, Any]] = []
     for f in list_frames():
         hay = " ".join(
-            str(f.get(k) or "")
-            for k in ("id", "name", "brand", "style", "category", "color")
+            str(f.get(k) or "") for k in ("id", "name", "brand", "style", "category", "color")
         ).lower()
         if q in hay:
             hits.append(f)

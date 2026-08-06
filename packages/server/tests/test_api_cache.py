@@ -1,5 +1,5 @@
-import pytest
 import httpx
+import pytest
 
 from beear.api import CATALOG_CACHE_CONTROL, app
 

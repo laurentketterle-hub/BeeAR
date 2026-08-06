@@ -226,8 +226,6 @@ def build_person_bust():
     parts.append((*_uv_sphere(0.95, 20, 28, (0, 1.55, 0)), skin))
     # hair cap
     V, N, I = _uv_sphere(0.98, 12, 20, (0, 1.72, -0.05))
-    # keep top half roughly
-    mask = V[:, 1] > 1.55
     # simpler: full sphere slightly offset as hair
     parts.append((V, N, I, hair))
     # neck

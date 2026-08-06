@@ -1,4 +1,5 @@
 """3D person + GLB studio assets."""
+
 from __future__ import annotations
 
 from pathlib import Path

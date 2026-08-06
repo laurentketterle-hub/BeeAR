@@ -13,7 +13,7 @@ import tempfile
 from pathlib import Path
 
 import numpy as np
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw
 
 ROOT = Path(__file__).resolve().parents[1]
 GLB_DIR = ROOT / "packages" / "catalog" / "glb"
@@ -29,7 +29,7 @@ def load_glb_positions(path: Path) -> np.ndarray:
         raise ValueError(f"not glb: {path}")
     # skip 12-byte header
     off = 12
-    json_len, json_type = struct.unpack_from("<I4s", data, off)
+    json_len, _json_type = struct.unpack_from("<I4s", data, off)
     off += 8
     import json
 

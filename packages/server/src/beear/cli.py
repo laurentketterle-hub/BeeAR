@@ -62,10 +62,6 @@ def demo_cmd() -> None:
     rprint("BeeAR demo complete (catalog + PD fit + compare + 3D person/GLB).")
 
 
-
-
-
-
 @catalog_app.command("count")
 def count_cmd() -> None:
     """Show frame / GLB / person counts from the offline catalog."""
@@ -85,6 +81,7 @@ def count_cmd() -> None:
             "catalog_version": cat.get("version"),
         }
     )
+
 
 @catalog_app.command("search")
 def search_cmd(
@@ -107,6 +104,7 @@ def search_cmd(
         )
     rprint(table)
     rprint({"count": len(hits), "query": query})
+
 
 @catalog_app.command("styles")
 def catalog_styles() -> None:
@@ -147,9 +145,7 @@ def catalog_price_stats() -> None:
 def catalog_list(
     category: str | None = typer.Option(None, "--category", "-c"),
     style: str | None = typer.Option(None, "--style", "-s"),
-    max_price: int | None = typer.Option(
-        None, "--max-price", help="Max price_cents filter"
-    ),
+    max_price: int | None = typer.Option(None, "--max-price", help="Max price_cents filter"),
     glb_only: bool = typer.Option(False, "--glb", help="Only frames with GLB mesh"),
 ) -> None:
     table = Table(title="BeeAR catalog")
@@ -178,7 +174,9 @@ def catalog_list(
 @catalog_app.command("show")
 def catalog_show(
     frame_id: str = typer.Argument(..., help="Frame/SKU id to display"),
-    json_output: bool = typer.Option(False, "--json", "-j", help="Output raw JSON instead of table"),
+    json_output: bool = typer.Option(
+        False, "--json", "-j", help="Output raw JSON instead of table"
+    ),
 ) -> None:
     """Show detailed frame info with fit fields as a pretty table."""
     f = get_frame(frame_id)
@@ -339,6 +337,7 @@ def serve_cmd(
     port: int = typer.Option(8860, "--port"),
 ) -> None:
     import uvicorn
+
     from beear.api import app as fastapi_app
 
     rprint(f"BeeAR → http://{host}:{port}")
@@ -347,4 +346,3 @@ def serve_cmd(
 
 if __name__ == "__main__":
     app()
-
