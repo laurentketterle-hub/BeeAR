@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" fill="none">
+  <!-- Winter Frost: rectangle frames with icy blue and silver tones -->
+  <rect x="18" y="26" width="64" height="36" rx="4" stroke="#88B8D0" stroke-width="5" fill="rgba(136,184,208,0.18)"/>
+  <rect x="118" y="26" width="64" height="36" rx="4" stroke="#88B8D0" stroke-width="5" fill="rgba(136,184,208,0.18)"/>
+  <path d="M82 38 H118" stroke="#88B8D0" stroke-width="4"/>
+  <!-- Snowflake accents -->
+  <line x1="50" y1="19" x2="50" y2="25" stroke="#B0D8F0" stroke-width="1.5"/>
+  <line x1="46" y1="22" x2="54" y2="22" stroke="#B0D8F0" stroke-width="1.5"/>
+  <line x1="150" y1="19" x2="150" y2="25" stroke="#B0D8F0" stroke-width="1.5"/>
+  <line x1="146" y1="22" x2="154" y2="22" stroke="#B0D8F0" stroke-width="1.5"/>
+</svg>

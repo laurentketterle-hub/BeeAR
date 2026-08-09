@@ -1810,6 +1810,130 @@
       },
       "render_mode": "glb3d",
       "description": "Rose gold round frames \u2014 catalog SKU cycle 16q"
+    },
+    {
+      "id": "summer_breeze",
+      "name": "Summer Breeze",
+      "brand": "BeeAR Studio",
+      "category": "glasses",
+      "style": "round",
+      "color": "#D4A017",
+      "lens_tint": "rgba(212,160,23,0.16)",
+      "price_cents": 11200,
+      "svg": "summer_breeze.svg",
+      "glb": "round-tortoise.glb",
+      "render_mode": "glb3d",
+      "featured": false,
+      "fit": {
+        "width_mm": 136,
+        "bridge_mm": 18,
+        "temple_mm": 142
+      },
+      "studio_fit": {
+        "scale": 0.98,
+        "y": -0.007,
+        "z": 0.016
+      },
+      "ar_fit": {
+        "scale": 0.98,
+        "y": -0.002,
+        "pitch": 0.01,
+        "yaw": 0
+      },
+      "description": "Sun-kissed round frames with warm gold tones — seasonal summer edition (#19)"
+    },
+    {
+      "id": "autumn_amber",
+      "name": "Autumn Amber",
+      "brand": "BeeAR Studio",
+      "category": "glasses",
+      "style": "wayfarer",
+      "color": "#B85C1E",
+      "lens_tint": "rgba(184,92,30,0.18)",
+      "price_cents": 11500,
+      "svg": "autumn_amber.svg",
+      "glb": "clubmaster-amber.glb",
+      "render_mode": "glb3d",
+      "featured": false,
+      "fit": {
+        "width_mm": 140,
+        "bridge_mm": 18,
+        "temple_mm": 144
+      },
+      "studio_fit": {
+        "scale": 1.0,
+        "y": -0.008,
+        "z": 0.017
+      },
+      "ar_fit": {
+        "scale": 0.99,
+        "y": -0.003,
+        "pitch": 0.011,
+        "yaw": 0
+      },
+      "description": "Rich amber wayfarer frames with copper accents — seasonal autumn edition (#19)"
+    },
+    {
+      "id": "winter_frost",
+      "name": "Winter Frost",
+      "brand": "BeeAR Studio",
+      "category": "glasses",
+      "style": "rectangle",
+      "color": "#88B8D0",
+      "lens_tint": "rgba(136,184,208,0.16)",
+      "price_cents": 11800,
+      "svg": "winter_frost.svg",
+      "glb": "rectangle-frost.glb",
+      "render_mode": "glb3d",
+      "featured": false,
+      "fit": {
+        "width_mm": 138,
+        "bridge_mm": 18,
+        "temple_mm": 143
+      },
+      "studio_fit": {
+        "scale": 1.0,
+        "y": -0.008,
+        "z": 0.016
+      },
+      "ar_fit": {
+        "scale": 0.99,
+        "y": -0.003,
+        "pitch": 0.01,
+        "yaw": 0
+      },
+      "description": "Icy blue rectangle frames with frost silver accents — seasonal winter edition (#19)"
+    },
+    {
+      "id": "spring_bloom",
+      "name": "Spring Bloom",
+      "brand": "BeeAR Studio",
+      "category": "glasses",
+      "style": "cateye",
+      "color": "#D4708A",
+      "lens_tint": "rgba(212,112,138,0.15)",
+      "price_cents": 12000,
+      "svg": "spring_bloom.svg",
+      "glb": "cateye-rose.glb",
+      "render_mode": "glb3d",
+      "featured": false,
+      "fit": {
+        "width_mm": 140,
+        "bridge_mm": 16,
+        "temple_mm": 143
+      },
+      "studio_fit": {
+        "scale": 1.0,
+        "y": -0.006,
+        "z": 0.018
+      },
+      "ar_fit": {
+        "scale": 0.99,
+        "y": -0.002,
+        "pitch": 0.012,
+        "yaw": 0
+      },
+      "description": "Blossom pink cateye frames with floral accents — seasonal spring edition (#19)"
     }
   ],
   "person_models": [

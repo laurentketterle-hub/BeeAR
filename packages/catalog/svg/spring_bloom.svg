@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" fill="none">
+  <!-- Spring Bloom: cateye frames with fresh pink and blossom green tones -->
+  <path d="M22 40 L38 22 L62 22 L74 40 L62 58 L38 58 Z" stroke="#D4708A" stroke-width="4" fill="rgba(212,112,138,0.18)"/>
+  <path d="M126 40 L138 22 L162 22 L178 40 L162 58 L138 58 Z" stroke="#D4708A" stroke-width="4" fill="rgba(212,112,138,0.18)"/>
+  <path d="M74 40 H126" stroke="#D4708A" stroke-width="4"/>
+  <!-- Flower bud accents -->
+  <circle cx="36" cy="18" r="4" fill="#E890A8"/>
+  <circle cx="164" cy="18" r="4" fill="#E890A8"/>
+  <circle cx="39" cy="15" r="3" fill="#F0B8C8"/>
+  <circle cx="161" cy="15" r="3" fill="#F0B8C8"/>
+</svg>

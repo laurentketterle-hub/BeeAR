@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" fill="none">
+  <!-- Summer Breeze: round frames with sun-kissed warm gold tones -->
+  <circle cx="58" cy="40" r="26" stroke="#D4A017" stroke-width="5" fill="rgba(212,160,23,0.18)"/>
+  <circle cx="142" cy="40" r="26" stroke="#D4A017" stroke-width="5" fill="rgba(212,160,23,0.18)"/>
+  <path d="M84 40 H116" stroke="#D4A017" stroke-width="4"/>
+  <!-- Sun rays accent -->
+  <line x1="46" y1="28" x2="46" y2="24" stroke="#F4C430" stroke-width="2"/>
+  <line x1="70" y1="28" x2="70" y2="24" stroke="#F4C430" stroke-width="2"/>
+  <line x1="130" y1="28" x2="130" y2="24" stroke="#F4C430" stroke-width="2"/>
+  <line x1="154" y1="28" x2="154" y2="24" stroke="#F4C430" stroke-width="2"/>
+</svg>
